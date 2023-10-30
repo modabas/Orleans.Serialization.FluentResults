@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{96C91644-8838-49F3-A6D4-6C01E8D50CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.Serialization.FluentResults", "src\Orleans.Serialization.FluentResults\Orleans.Serialization.FluentResults.csproj", "{B18A2933-7252-4180-982A-4EE54BD573D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2350887-2368-4FE2-9CB5-D537677C2FC5}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E7F5F438-E364-4C89-B474-964060027A2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{3D50951D-681E-417F-A846-6108958CF5F3}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{34FC673A-6369-4697-A6AC-DB79BBD2B9E4}"
+	ProjectSection(SolutionItems) = preProject
+		assets\logo_128.png = assets\logo_128.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B18A2933-7252-4180-982A-4EE54BD573D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18A2933-7252-4180-982A-4EE54BD573D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18A2933-7252-4180-982A-4EE54BD573D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18A2933-7252-4180-982A-4EE54BD573D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B18A2933-7252-4180-982A-4EE54BD573D5} = {96C91644-8838-49F3-A6D4-6C01E8D50CB9}
+		{E7F5F438-E364-4C89-B474-964060027A2A} = {D2350887-2368-4FE2-9CB5-D537677C2FC5}
+		{3D50951D-681E-417F-A846-6108958CF5F3} = {E7F5F438-E364-4C89-B474-964060027A2A}
+		{34FC673A-6369-4697-A6AC-DB79BBD2B9E4} = {D2350887-2368-4FE2-9CB5-D537677C2FC5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59014D2E-5798-4825-8341-715787BD5A6F}
+	EndGlobalSection
+EndGlobal
