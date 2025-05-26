@@ -26,7 +26,7 @@ internal class ResultSerializationGrain : IResultSerializationGrain
   {
     // Arrange
     var errors = new List<IError> { error1, error2, error3, error4, error5 };
-    var resultOriginal = Result.Fail(errors.ToArray());
+    var resultOriginal = Result.Fail(errors.ToArray()).WithSuccess(success3);
 
     // Act
     return Task.FromResult(resultOriginal);

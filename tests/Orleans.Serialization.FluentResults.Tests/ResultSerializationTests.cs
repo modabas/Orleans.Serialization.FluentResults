@@ -47,7 +47,7 @@ public class ResultSerializationTests
     Assert.NotNull(result);
     Assert.False(result.IsSuccess);
     Assert.True(result.IsFailed);
-    Assert.Equal(5, result.Reasons.Count);
+    Assert.Equal(6, result.Reasons.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -60,6 +60,9 @@ public class ResultSerializationTests
     Assert.IsType<ExceptionalError>(result.Reasons[4]);
     Assert.Equal("Error 5", result.Reasons[4].Message);
     Assert.IsType<ApplicationException>(((ExceptionalError)result.Reasons[4]).Exception);
+    Assert.IsType<SuccessChild>(result.Reasons[5]);
+    Assert.Equal("Success Message", result.Reasons[5].Message);
+    Assert.Equal("Success 3 Extra", ((SuccessChild)result.Reasons[5]).Extra);
   }
 
 }
