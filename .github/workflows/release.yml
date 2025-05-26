@@ -4,26 +4,37 @@ on:
   release:
     types: [published]
     
+env:
+  PROJECTNAME: "Orleans.Serialization.FluentResults"
+
+  TESTSPROJECTNAME: "Orleans.Serialization.FluentResults.Tests"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: | 
           7.0.x
           8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
     - name: Build
-      run: dotnet build -c Release
+      run: dotnet build ${{ env.PROJECTNAME }} --configuration Release --no-restore
+      working-directory: src
     - name: Test
-      run: dotnet test -c Release --no-build
-    - name: Pack nugets
-      run: dotnet pack -c Release --no-build --output .
+      run: dotnet test ${{ env.TESTSPROJECTNAME }} --no-restore --verbosity normal
+      working-directory: tests
+    - name: Package nuget
+      run: dotnet pack ${{ env.PROJECTNAME }} --configuration Release --no-build -o:package
+      working-directory: src
     - name: Push to NuGet
-      run: dotnet nuget push "*.nupkg" --api-key ${{secrets.nuget_api_key}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./package/*.nupkg --api-key ${{secrets.nuget_api_key}} --source https://api.nuget.org/v3/index.json
+      working-directory: src
