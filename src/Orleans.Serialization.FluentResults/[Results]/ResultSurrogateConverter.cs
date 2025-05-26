@@ -26,7 +26,7 @@ public sealed class ResultSurrogateConverter<TValue> :
   {
 
     var result = new Result<TValue>().WithReasons(surrogate.Reasons);
-    if (surrogate.Value is not null)
+    if (surrogate.Reasons.Count == 0 && surrogate.Value is not null)
     {
       result.WithValue(surrogate.Value);
     }
