@@ -52,7 +52,7 @@ internal class ResultOfTSerializationGrain : IResultOfTSerializationGrain
     return Task.FromResult(resultOfTOriginal);
   }
 
-  public Task<Result<ValueClass>> OkResultWithValueClass()
+  public Task<Result<ValueClass>> OkResultWithValueClassAndReasons()
   {
     // Arrange
     var resultOfTOriginal = Result.Ok(
@@ -65,7 +65,7 @@ internal class ResultOfTSerializationGrain : IResultOfTSerializationGrain
     return Task.FromResult(resultOfTOriginal);
   }
 
-  public Task<Result<ValueRecord>> OkResultWithValueRecord()
+  public Task<Result<ValueRecord>> OkResultWithValueRecordAndReasons()
   {
     // Arrange
     var resultOfTOriginal = Result.Ok(
@@ -78,13 +78,82 @@ internal class ResultOfTSerializationGrain : IResultOfTSerializationGrain
     return Task.FromResult(resultOfTOriginal);
   }
 
-  public Task<Result<ValueStruct>> OkResultWithValueStruct()
+  public Task<Result<ValueStruct>> OkResultWithValueStructAndReasons()
   {
     // Arrange
     var resultOfTOriginal = Result.Ok(
       new ValueStruct() { Number = 42, String = "Meaning of life." })
       .WithSuccess(success1)
       .WithSuccess(success2)
+      .WithSuccess(success3);
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueClass>> OkResultWithValueClass()
+  {
+    // Arrange
+    var resultOfTOriginal = Result.Ok(
+      new ValueClass() { Number = 42, String = "Meaning of life." });
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueRecord>> OkResultWithValueRecord()
+  {
+    // Arrange
+    var resultOfTOriginal = Result.Ok(
+      new ValueRecord(42, "Meaning of life."));
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueStruct>> OkResultWithValueStruct()
+  {
+    // Arrange
+    var resultOfTOriginal = Result.Ok(
+      new ValueStruct() { Number = 42, String = "Meaning of life." });
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueClass>> FailedResultWithValueInValueClass()
+  {
+    // Arrange
+    var errors = new List<IError> { error1, error2, error3, error4, error5 };
+    var resultOfTOriginal = Result.Ok(
+      new ValueClass() { Number = 42, String = "Meaning of life." })
+      .WithReasons(errors.ToArray())
+      .WithSuccess(success3);
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueRecord>> FailedResultWithValueInValueRecord()
+  {
+    // Arrange
+    var errors = new List<IError> { error1, error2, error3, error4, error5 };
+    var resultOfTOriginal = Result.Ok(
+      new ValueRecord(42, "Meaning of life."))
+      .WithReasons(errors.ToArray())
+      .WithSuccess(success3);
+
+    //Act
+    return Task.FromResult(resultOfTOriginal);
+  }
+
+  public Task<Result<ValueStruct>> FailedResultWithValueInValueStruct()
+  {
+    // Arrange
+    var errors = new List<IError> { error1, error2, error3, error4, error5 };
+    var resultOfTOriginal = Result.Ok(
+      new ValueStruct() { Number = 42, String = "Meaning of life." })
+      .WithReasons(errors.ToArray())
       .WithSuccess(success3);
 
     //Act
