@@ -13,6 +13,7 @@ public class ResultSerializationTests
     _cluster = fixture.Cluster;
   }
 
+
   [Fact]
   public async Task OkResultAsync()
   {
@@ -26,7 +27,27 @@ public class ResultSerializationTests
     Assert.NotNull(result);
     Assert.True(result.IsSuccess);
     Assert.False(result.IsFailed);
+    Assert.Empty(result.Reasons);
+    Assert.Empty(result.Successes);
+    Assert.Empty(result.Errors);
+  }
+
+  [Fact]
+  public async Task OkResultWithReasonsAsync()
+  {
+    // Arrange
+    var testGrain = _cluster.GrainFactory.GetGrain<IResultSerializationGrain>(0);
+
+    // Act
+    var result = await testGrain.OkResultWithReasons();
+
+    // Assert
+    Assert.NotNull(result);
+    Assert.True(result.IsSuccess);
+    Assert.False(result.IsFailed);
     Assert.Equal(3, result.Reasons.Count);
+    Assert.Equal(3, result.Successes.Count);
+    Assert.Empty(result.Errors);
     Assert.Equal("Success 1", result.Reasons[0].Message);
     Assert.Equal("Success 2", result.Reasons[1].Message);
     Assert.IsType<SuccessChild>(result.Reasons[2]);
@@ -48,6 +69,8 @@ public class ResultSerializationTests
     Assert.False(result.IsSuccess);
     Assert.True(result.IsFailed);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);

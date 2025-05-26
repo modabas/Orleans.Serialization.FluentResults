@@ -4,5 +4,6 @@ namespace Orleans.Serialization.FluentResults.Tests;
 internal interface IResultSerializationGrain : IGrainWithIntegerKey
 {
   Task<Result> OkResult();
+  Task<Result> OkResultWithReasons();
   Task<Result> FailedResult();
 }

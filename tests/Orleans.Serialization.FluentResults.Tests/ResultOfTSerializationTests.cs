@@ -30,6 +30,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Empty(result.Reasons);
+    Assert.Empty(result.Successes);
+    Assert.Empty(result.Errors);
   }
 
   [Fact]
@@ -49,6 +51,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Empty(result.Reasons);
+    Assert.Empty(result.Successes);
+    Assert.Empty(result.Errors);
   }
 
   [Fact]
@@ -68,6 +72,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Empty(result.Reasons);
+    Assert.Empty(result.Successes);
+    Assert.Empty(result.Errors);
   }
 
   [Fact]
@@ -86,6 +92,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Equal(3, result.Reasons.Count);
+    Assert.Equal(3, result.Successes.Count);
+    Assert.Empty(result.Errors);
     Assert.Equal("Success 1", result.Reasons[0].Message);
     Assert.Equal("Success 2", result.Reasons[1].Message);
     Assert.IsType<SuccessChild>(result.Reasons[2]);
@@ -110,6 +118,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Equal(3, result.Reasons.Count);
+    Assert.Equal(3, result.Successes.Count);
+    Assert.Empty(result.Errors);
     Assert.Equal("Success 1", result.Reasons[0].Message);
     Assert.Equal("Success 2", result.Reasons[1].Message);
     Assert.IsType<SuccessChild>(result.Reasons[2]);
@@ -134,6 +144,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.Value.Number);
     Assert.Equal("Meaning of life.", result.Value.String);
     Assert.Equal(3, result.Reasons.Count);
+    Assert.Equal(3, result.Successes.Count);
+    Assert.Empty(result.Errors);
     Assert.Equal("Success 1", result.Reasons[0].Message);
     Assert.Equal("Success 2", result.Reasons[1].Message);
     Assert.IsType<SuccessChild>(result.Reasons[2]);
@@ -155,6 +167,8 @@ public class ResultOfTSerializationTests
     Assert.False(result.IsSuccess);
     Assert.True(result.IsFailed);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -186,6 +200,8 @@ public class ResultOfTSerializationTests
     Assert.False(result.IsSuccess);
     Assert.True(result.IsFailed);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -217,6 +233,8 @@ public class ResultOfTSerializationTests
     Assert.False(result.IsSuccess);
     Assert.True(result.IsFailed);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -250,6 +268,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.ValueOrDefault.Number);
     Assert.Equal("Meaning of life.", result.ValueOrDefault.String);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -284,6 +304,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.ValueOrDefault.Number);
     Assert.Equal("Meaning of life.", result.ValueOrDefault.String);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);
@@ -318,6 +340,8 @@ public class ResultOfTSerializationTests
     Assert.Equal(42, result.ValueOrDefault.Number);
     Assert.Equal("Meaning of life.", result.ValueOrDefault.String);
     Assert.Equal(6, result.Reasons.Count);
+    Assert.Single(result.Successes);
+    Assert.Equal(5, result.Errors.Count);
     Assert.Equal("Error 1", result.Reasons[0].Message);
     Assert.Equal("Error 2", result.Reasons[1].Message);
     Assert.IsType<ErrorChild>(result.Reasons[2]);

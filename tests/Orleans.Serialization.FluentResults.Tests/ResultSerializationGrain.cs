@@ -35,6 +35,15 @@ internal class ResultSerializationGrain : IResultSerializationGrain
   public Task<Result> OkResult()
   {
     // Arrange
+    var resultOriginal = Result.Ok();
+
+    // Act
+    return Task.FromResult(resultOriginal);
+  }
+
+  public Task<Result> OkResultWithReasons()
+  {
+    // Arrange
     var resultOriginal = Result.Ok().WithSuccess(success1).WithSuccess(success2).WithSuccess(success3);
 
     // Act
