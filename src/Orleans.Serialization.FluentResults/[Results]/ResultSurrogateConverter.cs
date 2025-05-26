@@ -24,13 +24,11 @@ public sealed class ResultSurrogateConverter<TValue> :
 {
   public Result<TValue> ConvertFromSurrogate(in ResultSurrogate<TValue> surrogate)
   {
-
-    var result = new Result<TValue>().WithReasons(surrogate.Reasons);
-    if (surrogate.Reasons.Count == 0 && surrogate.Value is not null)
+    if (surrogate.Value is not null)
     {
-      result.WithValue(surrogate.Value);
+      return new Result<TValue>().WithValue(surrogate.Value).WithReasons(surrogate.Reasons);
     }
-    return result;
+    return new Result<TValue>().WithReasons(surrogate.Reasons);
   }
 
   public ResultSurrogate<TValue> ConvertToSurrogate(in Result<TValue> value)
