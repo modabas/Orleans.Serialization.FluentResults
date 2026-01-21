@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 
 namespace Orleans.Serialization.FluentResults.Tests;
+
 internal class ResultOfTSerializationGrain : IResultOfTSerializationGrain
 {
   private readonly Success success1, success2;

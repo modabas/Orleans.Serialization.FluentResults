@@ -1,4 +1,5 @@
 ﻿namespace Orleans.Serialization.FluentResults.Tests;
+
 internal class InheritanceSerializationGrain : IInheritanceSerializationGrain
 {
   public Task<ErrorChild> GetErrorChild(string extra)
